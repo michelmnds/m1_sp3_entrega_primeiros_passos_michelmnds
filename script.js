@@ -4,6 +4,7 @@ let numero2 = parseInt(prompt("Insira outro valor inteiro"));
 
 let maiorNumero = Math.max(numero1, numero2);
 let diferenca = numero1 - numero2;
+diferenca = Math.abs(diferenca);
 
 alert(`O maior número é ${maiorNumero} e a diferença é ${diferenca}`);
 
