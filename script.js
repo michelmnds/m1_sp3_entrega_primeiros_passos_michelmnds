@@ -10,8 +10,8 @@ alert(`O maior número é ${maiorNumero} e a diferença é ${diferenca}`);
 
 
 // Exercício 2
-let numero3 = parseInt(prompt("Insira um valor inteiro"));
-let numero4 = parseInt(prompt("Insira outro valor inteiro"));
+let numero3 = parseFloat(prompt("Insira um valor inteiro"));
+let numero4 = parseFloat(prompt("Insira outro valor inteiro"));
 
 if (numero3 == numero4){
     alert("Números iguais");
@@ -47,6 +47,9 @@ else if (divisivelPorCinco == 0){
 }
 else if (divisivelPorTres == 0 ){
     alert("Valor divisível por 3");
+}
+else if (numeroPar !== 0) {
+    alert ("É impar");
 }
 else{
     alert("É par");
@@ -85,7 +88,7 @@ else{
 // Exercício 6
 let salario1 = parseFloat(prompt("Insira o valor do salário:"));
 let reajusteSalario = parseFloat(prompt("Insira o valor do reajuste:"));
-let salarioFinl = salario1 + reajusteSalario;
+let salarioFinl = salario1 + (salario1 * reajusteSalario)/100;
 
 if (reajusteSalario > (5*salario1)/100){
     alert("O reajuste só pode ser de até 5%");
@@ -105,35 +108,40 @@ alert(`$${valorDolar.toFixed(2)} é equivalente a R$${conversao.toFixed(2)}, ten
 
 
 // Exercício 8
+function valorPulverizacao (){
+    
 let tipoPulverizacao = parseInt(prompt("Insira o tipo de pulverização:"));
 let areaPulverizacao = parseInt(prompt("Insira o tamanho da área a ser pulverizada:"));
-let valorPulverizacao = tipoPulverizacao*areaPulverizacao;
-let descontoCincoPorCento = (5*valorPulverizacao)/100;
-let descontoDezPorCento = (10*valorPulverizacao)/100;
-
+let descontoCincoPorCento = 0;
+let descontoDezPorCento = 0;
+let valorPulverizacaoPorTipo = 0;
+let valorPulverizacaoTotal = 0;
 
 if (tipoPulverizacao == 1){
-    alert(`O valor ser pago é de: R$${50*valorPulverizacao}`);
+    valorPulverizacaoPorTipo = 50*areaPulverizacao;
 }
 else if (tipoPulverizacao == 2){
-    alert(`O valor ser pago é de: R$${100*valorPulverizacao}`);
+    valorPulverizacaoPorTipo = 100*areaPulverizacao;
 }
 else if (tipoPulverizacao == 3){
-    alert(`O valor ser pago é de: R$${150*valorPulverizacao}`);
+    valorPulverizacaoPorTipo = 150*areaPulverizacao;
 }
 else if (tipoPulverizacao == 4){
-    alert(`O valor ser pago é de: R$${250*valorPulverizacao}`);
-}
-else if (valorPulverizacao >= 750){
-    valorPulverizacao - descontoDezPorCento;
-}
-else if (areaPulverizacao >= 1000){
-    valorPulverizacao - descontoCincoPorCento;
-}
-else{
-    alert("Insira um valor válido");
+    valorPulverizacaoPorTipo = 250*areaPulverizacao;
 }
 
+if (valorPulverizacaoPorTipo >= 750){
+    descontoDezPorCento = (valorPulverizacaoPorTipo - 750)*0.1;
+}
+
+if (areaPulverizacao >= 1000){
+    descontoCincoPorCento = (valorPulverizacaoPorTipo*0.05);
+}
+valorPulverizacaoTotal = valorPulverizacaoPorTipo - (descontoCincoPorCento + descontoDezPorCento);
+
+return alert(`O valor a ser pago é de: ${valorPulverizacaoTotal}`);
+}
+valorPulverizacao();
 
 // Exercício 9
 var tempo = parseInt(prompt("Insira o tempo gasto:"));
